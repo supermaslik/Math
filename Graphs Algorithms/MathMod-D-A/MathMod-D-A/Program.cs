@@ -12,8 +12,9 @@ namespace MathMod_D_A
 
         static void Main(string[] args)
         {
-            CreateMatrixFormFile.ReadFile();
-
+            var matrix = CreateMatrixFormFile.ReadFile();
+            GlobalFunctions.ShowMatrix<int>(matrix);
+            Console.ReadKey();
         }
     }
 }

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
-
 namespace MathMod_D_A
 {
     static class CreateMatrixFormFile
@@ -16,22 +15,64 @@ namespace MathMod_D_A
             int[,] matrix = FileReadLogic(Reader);
             return matrix;
         }
+
+
+
         private static int[,] FileReadLogic(StreamReader Reader) {
 
-            string WholeFile = Reader.ReadToEnd();
-            string BeforeEndLine = SelectFirstLine(WholeFile);
-            var ElementsInFile = FindAllDigitalInString(WholeFile);
-            var ElementsInFirstFileLine = FindAllDigitalInString(BeforeEndLine);
+            string WholeFile = ReadWholeFileAndCloseIt(Reader);
+
+            if(IsCurrentMatrixNotValid(WholeFile))
+            {
+                GlobalFunctions.Error("Matrix is not valid, problem in size of matrix");
+            }
+
+
+
+            return CreateMatrixAfterPreparation(WholeFile);
+        }
+
+        private static int[,] CreateMatrixAfterPreparation(string wholeFile)
+        {
+            string beforeEndLine = SelectFirstLine(wholeFile);
+            var ElementsInFirstFileLine = FindAllDigitalInString(beforeEndLine);
+            int MatrixDemention = ElementsInFirstFileLine.Count;
+
+            var WholeElements = FindAllDigitalInString(wholeFile);
+
+            int[,] matrixForReturn = new int[MatrixDemention, MatrixDemention];
+            int fcounter; int scounter;
+            fcounter = scounter = 0;
+            foreach(var diget in WholeElements)
+            {
+                matrixForReturn[fcounter, scounter++] = int.Parse(diget.ToString());
+                if (scounter == MatrixDemention)
+                {
+                    fcounter++;
+                    scounter = 0;
+                }
+            }
+            return matrixForReturn;
+        }
+
+        private static bool IsCurrentMatrixNotValid(string wholeFile)
+        {
+            string beforeEndLine = SelectFirstLine(wholeFile);
+            var ElementsInFile = FindAllDigitalInString(wholeFile);
+            var ElementsInFirstFileLine = FindAllDigitalInString(beforeEndLine);
+
             int CountOfElementsInFile = ElementsInFile.Count;
             int CountOfElementsInFirstFileLine = ElementsInFirstFileLine.Count;
-            if ((CountOfElementsInFile / CountOfElementsInFirstFileLine) != CountOfElementsInFirstFileLine)
-            {
-                Console.WriteLine("Matrix is not valid");
-            }
-            else
-                Console.WriteLine("Matrix is valid");
-            Console.ReadKey();
-            return null;
+            float Rest = CountOfElementsInFile % CountOfElementsInFirstFileLine;
+            if (((CountOfElementsInFile / CountOfElementsInFirstFileLine) != CountOfElementsInFirstFileLine) && Rest != 0)
+                return true;
+            return false;
+        }
+        private static string ReadWholeFileAndCloseIt(StreamReader reader)
+        {
+            string toReturn = reader.ReadToEnd();
+            reader.Close();
+            return toReturn;
         }
         private static StreamReader DeclareStreamReader(string fileName)
         {

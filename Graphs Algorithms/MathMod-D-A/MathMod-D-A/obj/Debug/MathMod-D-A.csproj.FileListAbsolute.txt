@@ -4,3 +4,9 @@ D:\языки программирования\C#\Console\MathMod-D-A\MathMod-D-
 D:\языки программирования\C#\Console\MathMod-D-A\MathMod-D-A\obj\Debug\MathMod-D-A.csprojResolveAssemblyReference.cache
 D:\языки программирования\C#\Console\MathMod-D-A\MathMod-D-A\obj\Debug\MathMod-D-A.exe
 D:\языки программирования\C#\Console\MathMod-D-A\MathMod-D-A\obj\Debug\MathMod-D-A.pdb
+D:\Git\GitHub\Math\Graphs Algorithms\MathMod-D-A\MathMod-D-A\bin\Debug\MathMod-D-A.exe.config
+D:\Git\GitHub\Math\Graphs Algorithms\MathMod-D-A\MathMod-D-A\obj\Debug\MathMod-D-A.exe
+D:\Git\GitHub\Math\Graphs Algorithms\MathMod-D-A\MathMod-D-A\obj\Debug\MathMod-D-A.pdb
+D:\Git\GitHub\Math\Graphs Algorithms\MathMod-D-A\MathMod-D-A\bin\Debug\MathMod-D-A.exe
+D:\Git\GitHub\Math\Graphs Algorithms\MathMod-D-A\MathMod-D-A\bin\Debug\MathMod-D-A.pdb
+D:\Git\GitHub\Math\Graphs Algorithms\MathMod-D-A\MathMod-D-A\obj\Debug\MathMod-D-A.csprojResolveAssemblyReference.cache
