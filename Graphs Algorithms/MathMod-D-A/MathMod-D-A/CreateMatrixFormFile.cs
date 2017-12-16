@@ -63,11 +63,19 @@ namespace MathMod_D_A
 
             int CountOfElementsInFile = ElementsInFile.Count;
             int CountOfElementsInFirstFileLine = ElementsInFirstFileLine.Count;
-            float Rest = CountOfElementsInFile % CountOfElementsInFirstFileLine;
-            if (((CountOfElementsInFile / CountOfElementsInFirstFileLine) != CountOfElementsInFirstFileLine) && Rest != 0)
+            float Rest = IsSizeOk(CountOfElementsInFile, CountOfElementsInFirstFileLine);
+            if (((CountOfElementsInFile / CountOfElementsInFirstFileLine) != CountOfElementsInFirstFileLine) && Rest != CountOfElementsInFirstFileLine)
                 return true;
             return false;
         }
+
+        private static float IsSizeOk(int countOfElementsInFile, int countOfElementsInFirstFileLine)
+        {
+            var ElInFile = (float)countOfElementsInFile;
+            var ElInFirstLine = (float)countOfElementsInFirstFileLine;
+            return ElInFile / ElInFirstLine;
+        }
+
         private static string ReadWholeFileAndCloseIt(StreamReader reader)
         {
             string toReturn = reader.ReadToEnd();

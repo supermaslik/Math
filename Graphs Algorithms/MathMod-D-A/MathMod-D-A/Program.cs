@@ -14,6 +14,7 @@ namespace MathMod_D_A
         {
             var matrix = CreateMatrixFormFile.ReadFile();
             GlobalFunctions.ShowMatrix<int>(matrix);
+            DijkstraAlgorithm.FindShortestWayByMatrixDesirialize(matrix, 1, 4);
             Console.ReadKey();
         }
     }
